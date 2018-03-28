@@ -11,6 +11,7 @@ public class Recursion {
 	    LinkedList list2 = new LinkedList();
 	    Node node = new Node(value);
 	    list2.setHead(node);
+	    return list2;
 	} else {
 	    Node head = list.getHead();
 	    Node node = new Node(value);
@@ -23,26 +24,33 @@ public class Recursion {
 
     private static String first(LinkedList list) {
 	// Return the first element (String) in list
+	if (list.getHead() != null) {
+	    return list.getHead().getValue();
+	}
 
 	return null;
     }
 
     private static LinkedList rest(LinkedList list) {
 	// Return all the elements except the first in the list
+	Node secondNode = list.getHead().getNext();
+
+	if (secondNode != null) {
+	    list.setHead(secondNode);
+	    return list;
+	}
 
 	return null;
     }
 
     private static boolean isNull(LinkedList list) {
 	// Determine if list is null
-
-	return true;
+	return list == null;
     }
 
     private static boolean isEqual(String s1, String s2) {
 	// Determine if two Strings are equal
-
-	return true;
+	return s1.equals(s2);
     }
 
     private static void printList(LinkedList list) {
@@ -73,14 +81,14 @@ public class Recursion {
 
     private static LinkedList deleteFirst(String delete, LinkedList list) {
 	// Returns a list in the same order, but with delete missing.
-	//If there is nothing to delete, return the original list.
+	// If there is nothing to delete, return the original list.
 
 	return null;
     }
 
     private static LinkedList deleteAll(String delete, LinkedList list) {
 	// Returns a list in the same order, but with all occurrences of delete missing.
-	//If there is nothing to delete, return the original list.
+	// If there is nothing to delete, return the original list.
 
 	return null;
     }
@@ -125,9 +133,6 @@ public class Recursion {
     }
 
     public static void main(String[] args) {
-	LinkedList list = new LinkedList();
-	list = append(add("Tic", add("Tac", add("Toe", null))), add("Toe", add("Tic", add("Tac", null))));
-	printList(list);
-	
+	printList(append(add("Tic", add("Tac", add("Toe", null))), add("Toe", add("Tic", add("Tac", null)))));
     }
 }
