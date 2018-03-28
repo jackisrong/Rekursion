@@ -75,15 +75,25 @@ public class Recursion {
     // MUST BE RECURSIVE
     private static boolean isMember(String member, LinkedList list) {
 	// Returns true if member is an item in the list.
-
-	return true;
+	if (list.getHead() == null) {
+	    return false;
+	} else if (first(list).equals(member)) {
+	    return true;
+	} else {
+	    return isMember(member, rest(list));
+	}	
     }
 
     private static LinkedList deleteFirst(String delete, LinkedList list) {
 	// Returns a list in the same order, but with delete missing.
 	// If there is nothing to delete, return the original list.
+	if (!isMember(delete, list)) {
+	    return list;
+	} else {
+	    // Recursively goes through every element looking for item, once you find item, delete it and stop method
+	}
 
-	return null;
+	return deleteFirst(delete, list);
     }
 
     private static LinkedList deleteAll(String delete, LinkedList list) {
@@ -134,5 +144,7 @@ public class Recursion {
 
     public static void main(String[] args) {
 	printList(append(add("Tic", add("Tac", add("Toe", null))), add("Toe", add("Tic", add("Tac", null)))));
+	System.out.println();
+	printList(deleteFirst("Tic", append(add("Tic", add("Tac", add("Toe", null))), add("Toe", add("Tic", add("Tac", null))))));
     }
 }

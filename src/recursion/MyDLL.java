@@ -2,14 +2,10 @@ package recursion;
 
 public class MyDLL {
     private DLLNode head;
-    private DLLNode before;
-    private DLLNode after;
     private DLLNode tail;
     
     public MyDLL() {
 	this.head = null;
-	this.before = null;
-	this.after = null;
 	this.tail = null;
     }
     
