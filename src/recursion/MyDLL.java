@@ -1,17 +1,16 @@
 package recursion;
 
 public class MyDLL {
-
     private DLLNode head;
     private DLLNode before;
     private DLLNode after;
     private DLLNode tail;
     
-    public MyDLL(DLLNode head, DLLNode before, DLLNode after, DLLNode tail) {
-	this.head = head;
-	this.before = before;
-	this.after = after;
-	this.tail = tail;
+    public MyDLL() {
+	this.head = null;
+	this.before = null;
+	this.after = null;
+	this.tail = null;
     }
     
     public void addNode(Integer value) {
