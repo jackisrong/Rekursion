@@ -1,15 +1,15 @@
 package recursion;
 
 public class Node {
-    private Integer value;
+    private String value;
     private Node next;
 
-    public Node(Integer value) {
+    public Node(String value) {
 	this.value = value;
 	this.next = null;
     }
 
-    public int getValue() {
+    public String getValue() {
 	return value;
     }
 
@@ -17,7 +17,7 @@ public class Node {
 	return next;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(String value) {
 	this.value = value;
     }
 

@@ -1,15 +1,24 @@
 package recursion;
 
-import java.util.LinkedList;
-
+//import java.util.LinkedList;
 public class Recursion {
 
     // THE FOLLOWING
     // ARE NOT RECURSIVE
     private static LinkedList add(String value, LinkedList list) {
 	// Add value to the front of list. If list is null, create a new LinkedList.
+	if (list == null) {
+	    LinkedList list2 = new LinkedList();
+	    Node node = new Node(value);
+	    list2.setHead(node);
+	} else {
+	    Node head = list.getHead();
+	    Node node = new Node(value);
+	    list.setHead(node);
+	    node.setNext(head);
+	}
 
-	return null;
+	return list;
     }
 
     private static String first(LinkedList list) {
@@ -38,6 +47,12 @@ public class Recursion {
 
     private static void printList(LinkedList list) {
 	// Print each item in list on a new line
+	Node after = list.getHead();
+
+	while (after != null) {
+	    System.out.println(after.getValue());
+	    after = after.getNext();
+	}
     }
 
     private static LinkedList append(LinkedList list1, LinkedList list2) {
@@ -80,36 +95,39 @@ public class Recursion {
     //THERE'RE NO REPEATED ELEMENTS, AND THE ORDER OF THE RETURNED LIST DOESN'T MATTER.
     private static LinkedList difference(LinkedList list1, LinkedList list2) {
 	// Returns a list of the difference between list1 and list2
-	
+
 	return null;
     }
 
     private static LinkedList union(LinkedList list1, LinkedList list2) {
 	// Returns a list of the union between list1 and list2.
-	
+
 	return null;
     }
 
     private static LinkedList intersect(LinkedList list1, LinkedList list2) {
 	// Returns a list of the intersection between list1 and list2.
-	
+
 	return null;
     }
 
     private static boolean subset(LinkedList list1, LinkedList list2) {
 	// Returns true if list1 is a subset of list2. Otherwise it returns false.
-	
+
 	return true;
     }
 
     private static boolean equalSets(LinkedList list1, LinkedList list2) {
 	// Returns true if list1 and list2 are equal, but not necessarily in the same order.
 	// Otherwise it returns false.
-	
+
 	return true;
     }
 
     public static void main(String[] args) {
-	printList(append(add("Tic", add("Tac", add("Toe", null))), add("Toe", add("Tic", add("Tac", null)))));
+	LinkedList list = new LinkedList();
+	list = append(add("Tic", add("Tac", add("Toe", null))), add("Toe", add("Tic", add("Tac", null))));
+	printList(list);
+	
     }
 }
