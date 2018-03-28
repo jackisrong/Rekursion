@@ -4,7 +4,8 @@ import java.util.LinkedList;
 
 public class Recursion {
 
-    // THE FOLLOWING ARE NOT RECURSIVE
+    // THE FOLLOWING
+    // ARE NOT RECURSIVE
     private static LinkedList add(String value, LinkedList list) {
 	// Add value to the front of list. If list is null, create a new LinkedList.
 
@@ -47,11 +48,8 @@ public class Recursion {
 	}
     }
 
-    
-    
-    
-        
-    // THE FOLLOWING MUST BE RECURSIVE
+    // THE FOLLOWING
+    // MUST BE RECURSIVE
     private static boolean isMember(String member, LinkedList list) {
 	// Returns true if member is an item in the list.
 
@@ -78,12 +76,40 @@ public class Recursion {
 	return null;
     }
 
-    
-    
-    
-    
+    //THE FOLLOWING MUST BE RECURSIVE, ASSUME THE USER WILL NEVER INPUT A BLANK LIST,
+    //THERE'RE NO REPEATED ELEMENTS, AND THE ORDER OF THE RETURNED LIST DOESN'T MATTER.
+    private static LinkedList difference(LinkedList list1, LinkedList list2) {
+	// Returns a list of the difference between list1 and list2
+	
+	return null;
+    }
+
+    private static LinkedList union(LinkedList list1, LinkedList list2) {
+	// Returns a list of the union between list1 and list2.
+	
+	return null;
+    }
+
+    private static LinkedList intersect(LinkedList list1, LinkedList list2) {
+	// Returns a list of the intersection between list1 and list2.
+	
+	return null;
+    }
+
+    private static boolean subset(LinkedList list1, LinkedList list2) {
+	// Returns true if list1 is a subset of list2. Otherwise it returns false.
+	
+	return true;
+    }
+
+    private static boolean equalSets(LinkedList list1, LinkedList list2) {
+	// Returns true if list1 and list2 are equal, but not necessarily in the same order.
+	// Otherwise it returns false.
+	
+	return true;
+    }
+
     public static void main(String[] args) {
 	printList(append(add("Tic", add("Tac", add("Toe", null))), add("Toe", add("Tic", add("Tac", null)))));
     }
-
 }
