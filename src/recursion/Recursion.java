@@ -117,8 +117,15 @@ public class Recursion {
 
     private static LinkedList reverse(LinkedList list) {
 	// Returns the reversed version of list.
+	if (isNull(list)) {
+	    return null;
+	} else if (list.getHead().getNext() == null) {
+	    return list;
+	}
 
-	return reverse(list);
+	return append(reverse(rest(list)), add(first(list), null));
+	
+	// IN THEORY THIS SHOULD WORK BUT IDK WHY IT DOESN'T
     }
 
     // THE FOLLOWING MUST BE RECURSIVE, ASSUME THE USER WILL NEVER INPUT A BLANK LIST,
@@ -165,5 +172,7 @@ public class Recursion {
 	printList(deleteAll("Tic", append(add("Tic", add("Tac", add("Toe", null))), add("Toe", add("Tic", add("Tac", null))))));
 	System.out.println("\nTesting deleteAll() with LinkedList with single Tic occurences:");
 	printList(deleteAll("Tic", add("Tic", add("Tac", add("Toe", null)))));
+	System.out.println("\nTesting reverse():");
+	printList(reverse(add("Tic", add("Tac", add("Toe", null)))));
     }
 }
