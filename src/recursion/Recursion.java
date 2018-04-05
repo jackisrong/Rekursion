@@ -77,45 +77,52 @@ public class Recursion {
 	// Returns true if member is an item in the list.
 	if (list.getHead() == null) {
 	    return false;
-	} else if (isEqual(member, first(list))) {  
+	} else if (isEqual(member, first(list))) {
 	    return true;
 	}
 
 	return isMember(member, rest(list));
+
+	// THERE MIGHT BE A PROBLEM WITH THIS METHOD BECAUSE IT DOESN'T WORK WHEN USED IN deleteFirst
+	// I THINK IT MIGHT BE PERMANENTLY ALTERING THE LIST WITH rest(list)
     }
 
     private static LinkedList deleteFirst(String delete, LinkedList list) {
 	// Returns a list in the same order, but with delete missing.
 	// If there is nothing to delete, return the original list.
-	if (!isMember(delete, list)) {
+	if (isNull(list)) {
 	    return list;
 	} else {
-	    // Recursively goes through every element looking for item, once you find item, delete it and stop method
-	    if (list.getHead().getValue().equals(delete)) {
-		System.out.println("hi");
-		
-		return list;
+	    if (first(list).equals(delete)) {
+		return rest(list);
 	    }
 	}
-	
-	return deleteFirst(delete, rest(list));
+
+	return append(add(first(list), null), deleteFirst(delete, rest(list)));
     }
 
     private static LinkedList deleteAll(String delete, LinkedList list) {
 	// Returns a list in the same order, but with all occurrences of delete missing.
 	// If there is nothing to delete, return the original list.
+	if (list.getHead() == null) {
+	    return list;
+	} else {
+	    if (first(list).equals(delete)) {
+		return deleteFirst(delete, rest(list));
+	    }
+	}
 
-	return null;
+	return append(add(first(list), null), deleteAll(delete, rest(list)));
     }
 
     private static LinkedList reverse(LinkedList list) {
 	// Returns the reversed version of list.
 
-	return null;
+	return reverse(list);
     }
 
-    //THE FOLLOWING MUST BE RECURSIVE, ASSUME THE USER WILL NEVER INPUT A BLANK LIST,
-    //THERE'RE NO REPEATED ELEMENTS, AND THE ORDER OF THE RETURNED LIST DOESN'T MATTER.
+    // THE FOLLOWING MUST BE RECURSIVE, ASSUME THE USER WILL NEVER INPUT A BLANK LIST,
+    // THERE'RE NO REPEATED ELEMENTS, AND THE ORDER OF THE RETURNED LIST DOESN'T MATTER.
     private static LinkedList difference(LinkedList list1, LinkedList list2) {
 	// Returns a list of the difference between list1 and list2
 
@@ -148,8 +155,15 @@ public class Recursion {
     }
 
     public static void main(String[] args) {
+	System.out.println("Testing append():");
 	printList(append(add("Tic", add("Tac", add("Toe", null))), add("Toe", add("Tic", add("Tac", null)))));
-	System.out.println();
-	printList(deleteFirst("Tac", append(add("Tic", add("Tac", add("Toe", null))), add("Toe", add("Tic", add("Tac", null))))));
+	System.out.println("\nTesting deleteFirst() with LinkedList with multiple Toe occurences:");
+	printList(deleteFirst("Toe", append(add("Tic", add("Tac", add("Toe", null))), add("Toe", add("Tic", add("Tac", null))))));
+	System.out.println("\nTesting deleteFirst() with LinkedList with single Toe occurences:");
+	printList(deleteFirst("Toe", add("Tic", add("Tac", add("Toe", null)))));
+	System.out.println("\nTesting deleteAll() with LinkedList with multiple Tic occurences:");
+	printList(deleteAll("Tic", append(add("Tic", add("Tac", add("Toe", null))), add("Toe", add("Tic", add("Tac", null))))));
+	System.out.println("\nTesting deleteAll() with LinkedList with single Tic occurences:");
+	printList(deleteAll("Tic", add("Tic", add("Tac", add("Toe", null)))));
     }
 }
