@@ -1,16 +1,22 @@
 package recursion;
 
 public class MyDLL {
+
     private DLLNode head;
     private DLLNode tail;
-    
+
     public MyDLL() {
 	this.head = null;
 	this.tail = null;
     }
-    
-    public void addNode(Integer value) {
+
+    public void addNode(String value) {
 	// Inserts node to the end of the linked list
+	DLLNode node = new DLLNode(value);
+	DLLNode tail = this.tail;
+	this.tail.setNext(node);
+	node.setPrevious(tail);
+	this.tail = node;
     }
 
     public void deleteNode(Integer value) {
@@ -44,5 +50,11 @@ public class MyDLL {
 
     public void printList() {
 	// Prints the contents of the linked list
+	DLLNode after = head;
+
+	while (after != null) {
+	    System.out.println(after.getValue());
+	    after = after.getNext();
+	}
     }
 }
