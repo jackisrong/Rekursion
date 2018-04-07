@@ -101,7 +101,7 @@ public class Recursion {
     private static LinkedList deleteFirst(String delete, LinkedList list) {
 	// Returns a list in the same order, but with delete missing.
 	// If there is nothing to delete, return the original list.
-	if (isNull(list)) {
+	if (!isMember(delete, list)) {
 	    return list;
 	} else {
 	    if (first(list).equals(delete)) {
@@ -115,7 +115,7 @@ public class Recursion {
     private static LinkedList deleteAll(String delete, LinkedList list) {
 	// Returns a list in the same order, but with all occurrences of delete missing.
 	// If there is nothing to delete, return the original list.
-	if (isNull(list)) {
+	if (!isMember(delete, list)) {
 	    return list;
 	} else {
 	    if (first(list).equals(delete)) {
