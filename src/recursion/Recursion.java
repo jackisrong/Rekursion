@@ -141,33 +141,72 @@ public class Recursion {
     // THERE'RE NO REPEATED ELEMENTS, AND THE ORDER OF THE RETURNED LIST DOESN'T MATTER.
     private static LinkedList difference(LinkedList list1, LinkedList list2) {
 	// Returns a list of the difference between list1 and list2
-
-	return null;
+	
+	// I THINK DIFFERENCE MEANS ALL THE ELEMENTS IN LIST1 THAT AREN'T IN LIST2 BUT I'M NOT SURE
+	
+	if (isNull(list2)) {
+	    return list1;
+	} else if (isMember(list2.getHead().getValue(), list2)) {
+	    list1 = deleteAll(list2.getHead().getValue(), list1);
+	}
+	
+	return difference(list1, rest(list2));
     }
 
     private static LinkedList union(LinkedList list1, LinkedList list2) {
 	// Returns a list of the union between list1 and list2.
+	
+	// I THINK UNION IS BOTH LISTS TOGETHER, EXCEPT DUPLICATES ONLY APPEAR ONCE
+	
+	if (isNull(list2)) {
+	    return list1;
+	} else if (!isMember(list2.getHead().getValue(), list1)) {
+	    list1 = add(list2.getHead().getValue(), list1);
+	}
 
-	return null;
+	return union(list1, rest(list2));
     }
 
     private static LinkedList intersect(LinkedList list1, LinkedList list2) {
 	// Returns a list of the intersection between list1 and list2.
+	
+	// I THINK INTERSECT IS THE MIDDLE PART OF A VEN DIAGRAM
+	
+	if (isNull(list2)) {
+	    return list1;
+	} else if (!isMember(list2.getHead().getValue(), list1)) {
+	    // THIS DOESN'T FUCKING WORK, IT SHOULD RETURN 2 AND 4
+	}
 
-	return null;
+	return intersect(list1, rest(list2));
     }
 
     private static boolean subset(LinkedList list1, LinkedList list2) {
 	// Returns true if list1 is a subset of list2. Otherwise it returns false.
 
-	return true;
+	// I THINK THIS WOULD CHECK IF ALL ELEMENTS IN LIST1 BELONG TO LIST2
+
+	if (isNull(list1)) {
+	    return true;
+	} else if (!isMember(list1.getHead().getValue(), list2)) {
+	    return false;
+	}
+	
+	return subset(rest(list1), list2);
     }
 
     private static boolean equalSets(LinkedList list1, LinkedList list2) {
 	// Returns true if list1 and list2 are equal, but not necessarily in the same order.
 	// Otherwise it returns false.
-
-	return true;
+	
+	if (isNull(list2)) {
+	    return true;
+	} else if (!isMember(list2.getHead().getValue(), list1)) {
+	    return false;
+	    // THIS METHOD DOESN'T WORK YET
+	}
+	
+	return equalSets(list1, rest(list2));
     }
 
     public static void main(String[] args) {
@@ -188,5 +227,19 @@ public class Recursion {
 
 	System.out.println("\nTesting reverse():");
 	printList(reverse(add("Tic", add("Tac", add("Toe", null)))));
+	
+	System.out.println("\nTesting difference():");
+	printList(difference(add("2", add("4", add("6", add("8", add("10", null))))), add("1", add("2", add("3", add("4", add("5", null)))))));
+    
+	System.out.println("\nTesting union():");
+	printList(union(add("2", add("4", add("6", add("8", add("10", null))))), add("1", add("2", add("3", add("4", add("5", null)))))));
+    
+	System.out.println("\nTesting intersect():");
+	printList(intersect(add("2", add("4", add("6", add("8", add("10", null))))), add("1", add("2", add("3", add("4", add("5", null)))))));
+    
+	System.out.println("\nTesting subset():");
+	System.out.println(subset(add("1", add("2", add("3", null))), add("1", add("2", add("3", add("4", add("5", null)))))));
+	System.out.println(subset(add("1", add("2", add("6", null))), add("1", add("2", add("3", add("4", add("5", null)))))));
+    
     }
 }
