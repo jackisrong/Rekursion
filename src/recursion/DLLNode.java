@@ -2,17 +2,17 @@ package recursion;
 
 public class DLLNode {
 
-    public String value;
+    public Integer value;
     public DLLNode previous;
     public DLLNode next;
 
-    public DLLNode(String value) {
+    public DLLNode(Integer value) {
 	this.value = value;
 	this.previous = null;
 	this.next = null;
     }
 
-    public String getValue() {
+    public Integer getValue() {
 	return value;
     }
     
