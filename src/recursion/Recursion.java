@@ -8,10 +8,10 @@ public class Recursion {
     private static LinkedList add(String value, LinkedList list) {
 	// Add value to the front of list. If list is null, create a new LinkedList.
 	if (list == null || list.getHead() == null) {
-	    LinkedList list2 = new LinkedList();
+	    LinkedList newList = new LinkedList();
 	    Node node = new Node(value);
-	    list2.setHead(node);
-	    return list2;
+	    newList.setHead(node);
+	    return newList;
 	} else {
 	    LinkedList newList = rest(list);
 	    String previousHeadValue = list.getHead().getValue();
@@ -29,6 +29,7 @@ public class Recursion {
 	if (!isNull(list)) {
 	    return list.getHead().getValue();
 	}
+	
 	return null;
     }
 
@@ -40,7 +41,7 @@ public class Recursion {
 
 	Node secondNode = list.getHead().getNext();
 	LinkedList newLinkedList = new LinkedList();
-	
+
 	while (secondNode != null) {
 	    if (newLinkedList.getHead() == null) {
 		newLinkedList.setHead(new Node(secondNode.getValue()));
@@ -103,10 +104,8 @@ public class Recursion {
 	// If there is nothing to delete, return the original list.
 	if (!isMember(delete, list)) {
 	    return list;
-	} else {
-	    if (first(list).equals(delete)) {
-		return rest(list);
-	    }
+	} else if (first(list).equals(delete)) {
+	    return rest(list);
 	}
 
 	return append(add(first(list), null), deleteFirst(delete, rest(list)));
@@ -117,10 +116,8 @@ public class Recursion {
 	// If there is nothing to delete, return the original list.
 	if (!isMember(delete, list)) {
 	    return list;
-	} else {
-	    if (first(list).equals(delete)) {
-		return deleteFirst(delete, rest(list));
-	    }
+	} else if (first(list).equals(delete)) {
+	    return deleteFirst(delete, rest(list));
 	}
 
 	return append(add(first(list), null), deleteAll(delete, rest(list)));
@@ -141,23 +138,21 @@ public class Recursion {
     // THERE'RE NO REPEATED ELEMENTS, AND THE ORDER OF THE RETURNED LIST DOESN'T MATTER.
     private static LinkedList difference(LinkedList list1, LinkedList list2) {
 	// Returns a list of the difference between list1 and list2
-	
+
 	// I THINK DIFFERENCE MEANS ALL THE ELEMENTS IN LIST1 THAT AREN'T IN LIST2 BUT I'M NOT SURE
-	
 	if (isNull(list2)) {
 	    return list1;
 	} else if (isMember(list2.getHead().getValue(), list2)) {
 	    list1 = deleteAll(list2.getHead().getValue(), list1);
 	}
-	
+
 	return difference(list1, rest(list2));
     }
 
     private static LinkedList union(LinkedList list1, LinkedList list2) {
 	// Returns a list of the union between list1 and list2.
-	
+
 	// I THINK UNION IS BOTH LISTS TOGETHER, EXCEPT DUPLICATES ONLY APPEAR ONCE
-	
 	if (isNull(list2)) {
 	    return list1;
 	} else if (!isMember(list2.getHead().getValue(), list1)) {
@@ -169,9 +164,8 @@ public class Recursion {
 
     private static LinkedList intersect(LinkedList list1, LinkedList list2) {
 	// Returns a list of the intersection between list1 and list2.
-	
+
 	// I THINK INTERSECT IS THE MIDDLE PART OF A VEN DIAGRAM
-	
 	if (isNull(list2)) {
 	    return list1;
 	} else if (!isMember(list2.getHead().getValue(), list1)) {
@@ -185,27 +179,26 @@ public class Recursion {
 	// Returns true if list1 is a subset of list2. Otherwise it returns false.
 
 	// I THINK THIS WOULD CHECK IF ALL ELEMENTS IN LIST1 BELONG TO LIST2
-
 	if (isNull(list1)) {
 	    return true;
 	} else if (!isMember(list1.getHead().getValue(), list2)) {
 	    return false;
 	}
-	
+
 	return subset(rest(list1), list2);
     }
 
     private static boolean equalSets(LinkedList list1, LinkedList list2) {
 	// Returns true if list1 and list2 are equal, but not necessarily in the same order.
 	// Otherwise it returns false.
-	
+
 	if (isNull(list2)) {
 	    return true;
 	} else if (!isMember(list2.getHead().getValue(), list1)) {
 	    return false;
 	    // THIS METHOD DOESN'T WORK YET
 	}
-	
+
 	return equalSets(list1, rest(list2));
     }
 
@@ -227,19 +220,19 @@ public class Recursion {
 
 	System.out.println("\nTesting reverse():");
 	printList(reverse(add("Tic", add("Tac", add("Toe", null)))));
-	
+
 	System.out.println("\nTesting difference():");
 	printList(difference(add("2", add("4", add("6", add("8", add("10", null))))), add("1", add("2", add("3", add("4", add("5", null)))))));
-    
+
 	System.out.println("\nTesting union():");
 	printList(union(add("2", add("4", add("6", add("8", add("10", null))))), add("1", add("2", add("3", add("4", add("5", null)))))));
-    
+
 	System.out.println("\nTesting intersect():");
 	printList(intersect(add("2", add("4", add("6", add("8", add("10", null))))), add("1", add("2", add("3", add("4", add("5", null)))))));
-    
+
 	System.out.println("\nTesting subset():");
 	System.out.println(subset(add("1", add("2", add("3", null))), add("1", add("2", add("3", add("4", add("5", null)))))));
 	System.out.println(subset(add("1", add("2", add("6", null))), add("1", add("2", add("3", add("4", add("5", null)))))));
-    
+
     }
 }
