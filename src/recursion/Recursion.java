@@ -196,7 +196,8 @@ public class Recursion {
 	    return true;
 	} else if (!isMember(list2.getHead().getValue(), list1)) {
 	    return false;
-	    // THIS METHOD DOESN'T WORK YET
+	    // I'M NOT 100% SURE IF THIS METHOD WORKS YET
+	    // ACTUALLY I'M NOT SURE IF ANY OF THE METHODS WORK YET
 	}
 
 	return equalSets(list1, rest(list2));
@@ -234,5 +235,8 @@ public class Recursion {
 	System.out.println(subset(add("1", add("2", add("3", null))), add("1", add("2", add("3", add("4", add("5", null)))))));
 	System.out.println(subset(add("1", add("2", add("6", null))), add("1", add("2", add("3", add("4", add("5", null)))))));
 
+	System.out.println("\nTesting equalSets():");
+	System.out.println(equalSets(add("1", add("2", add("3", add("4", add("5", null))))), add("1", add("2", add("3", add("4", add("5", null)))))));
+	System.out.println(equalSets(add("1", add("2", add("6", null))), add("1", add("2", add("3", add("4", add("5", null)))))));
     }
 }
