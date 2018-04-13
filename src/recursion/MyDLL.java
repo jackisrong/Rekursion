@@ -69,7 +69,7 @@ public class MyDLL {
 
     public void alternate(MyDLL list) {
         // Merges the contents of list and this class in alternating order class = 1 2 3,
-        // list = 4 4 4  alternate = 1 4 2 4 3 4
+        // list = 4 4 4 -> alternate = 1 4 2 4 3 4
 
         DLLNode classHead = this.head;
         DLLNode listHead = list.head;

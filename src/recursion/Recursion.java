@@ -138,8 +138,7 @@ public class Recursion {
     // THERE'RE NO REPEATED ELEMENTS, AND THE ORDER OF THE RETURNED LIST DOESN'T MATTER.
     private static LinkedList difference(LinkedList list1, LinkedList list2) {
         // Returns a list of the difference between list1 and list2
-
-        // I THINK DIFFERENCE MEANS ALL THE ELEMENTS IN LIST1 THAT AREN'T IN LIST2 BUT I'M NOT SURE
+        //Returns all elements in list1 that aren't in list 2
         if (isNull(list2)) {
             return list1;
         } else if (isMember(list2.getHead().getValue(), list2)) {
@@ -151,8 +150,7 @@ public class Recursion {
 
     private static LinkedList union(LinkedList list1, LinkedList list2) {
         // Returns a list of the union between list1 and list2.
-
-        // I THINK UNION IS BOTH LISTS TOGETHER, EXCEPT DUPLICATES ONLY APPEAR ONCE
+        //Returns both lists together, except duplcates only appear once
         if (isNull(list2)) {
             return list1;
         } else if (!isMember(list2.getHead().getValue(), list1)) {
@@ -175,8 +173,7 @@ public class Recursion {
 
     private static boolean subset(LinkedList list1, LinkedList list2) {
         // Returns true if list1 is a subset of list2. Otherwise it returns false.
-
-        // I THINK THIS WOULD CHECK IF ALL ELEMENTS IN LIST1 BELONG TO LIST2
+        // Returns true is all elements in list1 are found in list2. Otherwise, return false.
         if (isNull(list1)) {
             return true;
         } else if (!isMember(list1.getHead().getValue(), list2)) {
