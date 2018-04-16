@@ -229,22 +229,41 @@ public class Recursion {
 	dll.addNode(5);
 	dll.addNode(0);
 	dll.addNode(55);
+	System.out.println("\nDLL printList():");
 	dll.printList();
+	
+	System.out.println("\nDLL deleteNode(55):");
+	dll.deleteNode(55);
+	dll.printList();
+	
+	System.out.println("\nDLL sort():");
 	dll.sort();
 	dll.printList();
-	System.out.println("------");
-//        dll.deleteNode(55);
-//        dll.printList();
-	dll.middleAdd(500);
-	System.out.println("middle add 500");
+	
+	System.out.println("\nDLL reverse():");
+	dll.reverse();
 	dll.printList();
+
+	System.out.println("\nDLL duplicate():");
+	dll.duplicate();
+	dll.printList();
+	
 	MyDLL dll2 = new MyDLL();
 	dll2.addNode(-1);
 	dll2.addNode(-5);
 	dll2.addNode(-33);
 	dll2.addNode(-15);
+	
+	System.out.println("\nDLL alternate():");
 	dll.alternate(dll2);
-	System.out.println("alternate");
+	dll.printList();
+	
+	System.out.println("\nDLL optiFind():");
+	dll.optiFind(0);
+	dll.printList();
+	
+	System.out.println("\nDLL middleAdd(500):");
+	dll.middleAdd(500);
 	dll.printList();
     }
 }
