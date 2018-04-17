@@ -244,6 +244,10 @@ public class Recursion {
 	dll.reverse();
 	dll.printList();
 
+	System.out.println("\nAdd a duplicate 5:");
+	dll.addNode(5);
+	dll.printList();
+	
 	System.out.println("\nDLL duplicate():");
 	dll.duplicate();
 	dll.printList();
@@ -253,7 +257,6 @@ public class Recursion {
 	dll2.addNode(-5);
 	dll2.addNode(-33);
 	dll2.addNode(-15);
-	
 	System.out.println("\nDLL alternate():");
 	dll.alternate(dll2);
 	dll.printList();
