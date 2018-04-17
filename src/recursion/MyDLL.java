@@ -66,7 +66,7 @@ public class MyDLL {
 	head = null;
 	
 	// 55 WAS DELETED
-	// BUT IT'S MAGICALLY BACK AGAIN
+	// BUT IT'S MAGICALLY BACK AGAIN, PROBABLY HAS TO DO WITH HEAD GETTING = TO NULL BUT TAIL NOT GETTING CLEARED
 	// FIX THIS MAN
 	while (listTail != null) {
 	    addNode(listTail.getValue());
