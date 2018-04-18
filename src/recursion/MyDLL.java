@@ -6,32 +6,35 @@ public class MyDLL {
     private DLLNode tail;
 
     public MyDLL() {
-	this.head = null;
-	this.tail = null;
+	head = null;
+	tail = null;
     }
 
     public void addNode(Integer value) {
 	// Inserts node to the end of the linked list
 	DLLNode node = new DLLNode(value);
+
 	if (head == null) {
 	    head = node;
 	    tail = node;
 	} else {
-	    this.tail.setNext(node);
-	    node.setPrevious(this.tail);
-	    this.tail = node;
+	    tail.setNext(node);
+	    node.setPrevious(tail);
+	    tail = node;
 	}
     }
 
     public void deleteNode(Integer value) {
 	// Deletes all nodes with the given value
 	DLLNode listHead = head;
+
 	while (listHead != null) {
 	    if (listHead.getValue().equals(value)) {
 		listHead.getPrevious().setNext(listHead.getNext());
-		//NULLPOINTER OCCURS WHEN LIST.GETNEXT() IS NULL AT END OF LIST
 		if (listHead.getNext() != null) {
 		    listHead.getNext().setPrevious(listHead.getPrevious());
+		} else {
+		    tail = listHead.getPrevious();
 		}
 	    }
 	    listHead = listHead.getNext();
@@ -65,9 +68,6 @@ public class MyDLL {
 	DLLNode listTail = tail;
 	head = null;
 
-	// 55 WAS DELETED
-	// BUT IT'S MAGICALLY BACK AGAIN, PROBABLY HAS TO DO WITH HEAD GETTING = TO NULL BUT TAIL NOT GETTING CLEARED
-	// FIX THIS MAN
 	while (listTail != null) {
 	    addNode(listTail.getValue());
 	    listTail = listTail.getPrevious();
@@ -77,15 +77,14 @@ public class MyDLL {
     public void duplicate() {
 	// Removes all duplicate nodes in the linked list
 	DLLNode referenceNode = head;
-	DLLNode before = null;
-	DLLNode node = head;
-	DLLNode after = head.getNext();
 
-	// THIS DOESN'T WORK LMAOOOOOOOOOOOOO HAHAHAHHAHHAHAHHA LOLOLOLOLOLOL
 	while (referenceNode != null) {
 	    int occurence = 0;
+	    DLLNode before = null;
+	    DLLNode node = head;
+	    DLLNode after = head.getNext();
 	    while (node != null) {
-		if (node.getValue() == referenceNode.getValue()) {
+		if (node.getValue().equals(referenceNode.getValue())) {
 		    occurence++;
 		}
 
@@ -93,6 +92,7 @@ public class MyDLL {
 		    if (before == null) {
 			head = after;
 		    } else if (after == null) {
+			before.setNext(null);
 			tail = before;
 		    } else {
 			after.setPrevious(before);
@@ -106,10 +106,11 @@ public class MyDLL {
 		    before = before.getNext();
 		}
 		node = node.getNext();
-		if (after.getNext() == null) {
+		if (after == null) {
 		    break;
+		} else {
+		    after = after.getNext();
 		}
-		after = after.getNext();
 	    }
 	    referenceNode = referenceNode.getNext();
 	}
@@ -123,10 +124,6 @@ public class MyDLL {
 	DLLNode listHead = list.head;
 	head = null;
 
-	// THIS CODE SHOULD MAKE IT SO THAT IF A LIST IS 1 2 3 4 5 6
-	// AND THE OTHER LIST IS 11 12 13
-	// THEN IT SHOULD OUTPUT 1 11 2 12 3 13 4 5 6
-	// IN THEORY, BUT IT ISN'T TESTED
 	while (classHead != null || listHead != null) {
 	    if (classHead != null) {
 		newList.addNode(classHead.getValue());
@@ -141,17 +138,6 @@ public class MyDLL {
 
 	head = newList.head;
 	tail = newList.tail;
-
-	// IF THE SETS ARE DIFFERENT SIZES
-	// THIS DOESN'T PRINT SOME OF THEM
-	/*
-	while (classHead != null && listHead != null) {
-	    addNode(classHead.getValue());
-	    addNode(listHead.getValue());
-	    classHead = classHead.getNext();
-	    listHead = listHead.getNext();
-	}
-	 */
     }
 
     public void optiFind(Integer value) {
@@ -160,22 +146,21 @@ public class MyDLL {
 	DLLNode node = head;
 	DLLNode after = head.getNext();
 
-	// THIS MIGHT BE WORKING BUT IDKKKK HAHAHAHHAHAHA I LOVE COMP SCI
 	while (node != null) {
 	    DLLNode listHead = head;
-	    if (node.getValue() == value) {
+	    if (node.getValue().equals(value)) {
 		if (before == null) {
-		    // do nothing cuz it's already at the front of the list
+		    // Do nothing
 		} else if (after == null) {
 		    tail = before;
-		    // then move node to front of list
+		    // Move node to front of the list
 		    head = node;
 		    node.setNext(listHead);
 		    listHead.setPrevious(node);
 		} else {
 		    before.setNext(after);
 		    after.setPrevious(before);
-		    // then move node to front of list
+		    // Move node to front of the list
 		    head = node;
 		    node.setNext(listHead);
 		    listHead.setPrevious(node);

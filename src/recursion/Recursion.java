@@ -244,7 +244,7 @@ public class Recursion {
 	dll.reverse();
 	dll.printList();
 
-	System.out.println("\nAdd a duplicate 5:");
+	System.out.println("\nDLL Add a duplicate 5:");
 	dll.addNode(5);
 	dll.printList();
 	
@@ -268,5 +268,20 @@ public class Recursion {
 	System.out.println("\nDLL middleAdd(500):");
 	dll.middleAdd(500);
 	dll.printList();
+	
+	MyDLL dll3 = new MyDLL();
+	dll3.addNode(1);
+	dll3.addNode(2);
+	dll3.addNode(3);
+	dll3.addNode(4);
+	dll3.addNode(5);
+	dll3.addNode(6);
+	MyDLL dll4 = new MyDLL();
+	dll4.addNode(11);
+	dll4.addNode(12);
+	dll4.addNode(13);
+	System.out.println("\nDLL alternate() TEST 2:");
+	dll3.alternate(dll4);
+	dll3.printList();
     }
 }
