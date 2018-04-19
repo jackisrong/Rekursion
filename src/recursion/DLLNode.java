@@ -7,28 +7,28 @@ public class DLLNode {
     public DLLNode next;
 
     public DLLNode(Integer value) {
-	this.value = value;
-	this.previous = null;
-	this.next = null;
+		this.value = value;
+		this.previous = null;
+		this.next = null;
     }
 
     public Integer getValue() {
-	return value;
+		return value;
     }
     
     public DLLNode getPrevious() {
-	return previous;
+		return previous;
     }
 
     public void setPrevious(DLLNode node) {
-	previous = node;
+		previous = node;
     }
     
     public DLLNode getNext() {
-	return next;
+		return next;
     }
     
     public void setNext(DLLNode node) {
-	next = node;
+		next = node;
     }
 }
