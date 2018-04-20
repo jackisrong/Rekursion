@@ -67,7 +67,12 @@ public class Recursion {
 
     private static void printList(LinkedList list) {
 		// Print each item in list on a new line
-		Node after = list.getHead();
+		Node after;
+		try {
+		    after = list.getHead();
+		} catch (NullPointerException e) {
+		    after = null;
+		}
 
 		while (after != null) {
 			System.out.println(after.getValue());
@@ -189,7 +194,6 @@ public class Recursion {
     }
 
     public static void main(String[] args) {
-	/*
 		System.out.println("Testing append():");
 		printList(append(add("Tic", add("Tac", add("Toe", null))), add("Toe", add("Tic", add("Tac", null)))));
 
@@ -287,46 +291,10 @@ public class Recursion {
 		
 		MyDLL dll5 = new MyDLL();
 		dll5.addNode(1);
-		//dll5.addNode(2);
-		//dll5.addNode(3);
+		dll5.addNode(2);
+		dll5.addNode(3);
 		System.out.println("\nDLL middleAdd(500) TEST 2:");
 		dll5.middleAdd(500);
 		dll5.printList();
-*/
-	
-	MyDLL d = new MyDLL();
-        d.addNode(1);
-        System.out.println();
-
-        d.optiFind(1);
-        d.reverse();
-        d.sort();
-        d.duplicate();
-        d.printList();
-        System.out.println();
-        d.middleAdd(2);
-        d.printList();
-        
-        MyDLL e = new MyDLL();
-
-        MyDLL f = new MyDLL();
-        System.out.println();
-        for (int i = 0; i < 3; i++) {
-            f.alternate(e);
-            f.sort();
-            f.duplicate();
-            f.deleteNode(0);
-            f.reverse();
-            f.printList();
-            f.optiFind(0);
-            f.addNode(0);
-            f.optiFind(0);
-            f.middleAdd(1);
-            f.optiFind(0);
-            f.alternate(f);
-            System.out.println();
-            f.printList();
-            System.out.println();
-        }
     }
 }
