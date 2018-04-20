@@ -1,17 +1,18 @@
 package recursion;
 
 public class LinkedList {
+
     private Node head;
 
     public LinkedList() {
-		this.head = null;
+	this.head = null;
     }
 
     public Node getHead() {
-		return head;
+	return head;
     }
-    
+
     public void setHead(Node head) {
-		this.head = head;
+	this.head = head;
     }
 }
