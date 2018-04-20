@@ -189,6 +189,7 @@ public class Recursion {
     }
 
     public static void main(String[] args) {
+	/*
 		System.out.println("Testing append():");
 		printList(append(add("Tic", add("Tac", add("Toe", null))), add("Toe", add("Tic", add("Tac", null)))));
 
@@ -213,75 +214,119 @@ public class Recursion {
 		System.out.println("\nTesting union():");
 		printList(union(add("2", add("4", add("6", add("8", add("10", null))))), add("1", add("2", add("3", add("4", add("5", null)))))));
 
-//		System.out.println("\nTesting intersect():");
-//		printList(intersect(add("2", add("4", add("6", add("8", add("10", null))))), add("1", add("2", add("3", add("4", add("5", null)))))));
-//
-//		System.out.println("\nTesting subset():");
-//		System.out.println(subset(add("1", add("2", add("3", null))), add("1", add("2", add("3", add("4", add("5", null)))))));
-//		System.out.println(subset(add("1", add("2", add("6", null))), add("1", add("2", add("3", add("4", add("5", null)))))));
-//
-//		System.out.println("\nTesting equalSets():");
-//		System.out.println(equalSets(add("1", add("2", add("3", add("5", add("4", null))))), add("3", add("2", add("1", add("4", add("5", null)))))));
-//		System.out.println(equalSets(add("1", add("2", add("6", null))), add("1", add("2", add("3", add("4", add("5", null)))))));
-//
-//		MyDLL dll = new MyDLL();
-//		dll.addNode(12);
-//		dll.addNode(5);
-//		dll.addNode(0);
-//		dll.addNode(55);
-//		System.out.println("\nDLL printList():");
-//		dll.printList();
-//
-//		System.out.println("\nDLL deleteNode(55):");
-//		dll.deleteNode(55);
-//		dll.printList();
-//
-//		System.out.println("\nDLL sort():");
-//		dll.sort();
-//		dll.printList();
-//
-//		System.out.println("\nDLL reverse():");
-//		dll.reverse();
-//		dll.printList();
-//
-//		System.out.println("\nDLL Add a duplicate 5:");
-//		dll.addNode(5);
-//		dll.printList();
-//
-//		System.out.println("\nDLL duplicate():");
-//		dll.duplicate();
-//		dll.printList();
-//
-//		MyDLL dll2 = new MyDLL();
-//		dll2.addNode(-1);
-//		dll2.addNode(-5);
-//		dll2.addNode(-33);
-//		dll2.addNode(-15);
-//		System.out.println("\nDLL alternate():");
-//		dll.alternate(dll2);
-//		dll.printList();
-//
-//		System.out.println("\nDLL optiFind():");
-//		dll.optiFind(0);
-//		dll.printList();
-//
-//		System.out.println("\nDLL middleAdd(500):");
-//		dll.middleAdd(500);
-//		dll.printList();
-//
-//		MyDLL dll3 = new MyDLL();
-//		dll3.addNode(1);
-//		dll3.addNode(2);
-//		dll3.addNode(3);
-//		dll3.addNode(4);
-//		dll3.addNode(5);
-//		dll3.addNode(6);
-//		MyDLL dll4 = new MyDLL();
-//		dll4.addNode(11);
-//		dll4.addNode(12);
-//		dll4.addNode(13);
-//		System.out.println("\nDLL alternate() TEST 2:");
-//		dll3.alternate(dll4);
-//		dll3.printList();
+		System.out.println("\nTesting intersect():");
+		printList(intersect(add("2", add("4", add("6", add("8", add("10", null))))), add("1", add("2", add("3", add("4", add("5", null)))))));
+
+		System.out.println("\nTesting subset():");
+		System.out.println(subset(add("1", add("2", add("3", null))), add("1", add("2", add("3", add("4", add("5", null)))))));
+		System.out.println(subset(add("1", add("2", add("6", null))), add("1", add("2", add("3", add("4", add("5", null)))))));
+
+		System.out.println("\nTesting equalSets():");
+		System.out.println(equalSets(add("1", add("2", add("3", add("5", add("4", null))))), add("3", add("2", add("1", add("4", add("5", null)))))));
+		System.out.println(equalSets(add("1", add("2", add("6", null))), add("1", add("2", add("3", add("4", add("5", null)))))));
+
+		MyDLL dll = new MyDLL();
+		dll.addNode(12);
+		dll.addNode(5);
+		dll.addNode(0);
+		dll.addNode(55);
+		System.out.println("\nDLL printList():");
+		dll.printList();
+
+		System.out.println("\nDLL deleteNode(55):");
+		dll.deleteNode(55);
+		dll.printList();
+
+		System.out.println("\nDLL sort():");
+		dll.sort();
+		dll.printList();
+
+		System.out.println("\nDLL reverse():");
+		dll.reverse();
+		dll.printList();
+
+		System.out.println("\nDLL Add a duplicate 5:");
+		dll.addNode(5);
+		dll.printList();
+
+		System.out.println("\nDLL duplicate():");
+		dll.duplicate();
+		dll.printList();
+
+		MyDLL dll2 = new MyDLL();
+		dll2.addNode(-1);
+		dll2.addNode(-5);
+		dll2.addNode(-33);
+		dll2.addNode(-15);
+		System.out.println("\nDLL alternate():");
+		dll.alternate(dll2);
+		dll.printList();
+
+		System.out.println("\nDLL optiFind():");
+		dll.optiFind(0);
+		dll.printList();
+
+		System.out.println("\nDLL middleAdd(500):");
+		dll.middleAdd(500);
+		dll.printList();
+
+		MyDLL dll3 = new MyDLL();
+		dll3.addNode(1);
+		dll3.addNode(2);
+		dll3.addNode(3);
+		dll3.addNode(4);
+		dll3.addNode(5);
+		dll3.addNode(6);
+		MyDLL dll4 = new MyDLL();
+		dll4.addNode(11);
+		dll4.addNode(12);
+		dll4.addNode(13);
+		System.out.println("\nDLL alternate() TEST 2:");
+		dll3.alternate(dll4);
+		dll3.printList();
+		
+		MyDLL dll5 = new MyDLL();
+		dll5.addNode(1);
+		//dll5.addNode(2);
+		//dll5.addNode(3);
+		System.out.println("\nDLL middleAdd(500) TEST 2:");
+		dll5.middleAdd(500);
+		dll5.printList();
+*/
+	
+	MyDLL d = new MyDLL();
+        d.addNode(1);
+        System.out.println();
+
+        d.optiFind(1);
+        d.reverse();
+        d.sort();
+        d.duplicate();
+        d.printList();
+        System.out.println();
+        d.middleAdd(2);
+        d.printList();
+        
+        MyDLL e = new MyDLL();
+
+        MyDLL f = new MyDLL();
+        System.out.println();
+        for (int i = 0; i < 3; i++) {
+            f.alternate(e);
+            f.sort();
+            f.duplicate();
+            f.deleteNode(0);
+            f.reverse();
+            f.printList();
+            f.optiFind(0);
+            f.addNode(0);
+            f.optiFind(0);
+            f.middleAdd(1);
+            f.optiFind(0);
+            f.alternate(f);
+            System.out.println();
+            f.printList();
+            System.out.println();
+        }
     }
 }

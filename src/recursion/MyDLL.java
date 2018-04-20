@@ -30,7 +30,12 @@ public class MyDLL {
 
 		while (listHead != null) {
 			if (listHead.getValue().equals(value)) {
-				listHead.getPrevious().setNext(listHead.getNext());
+				try {
+					listHead.getPrevious().setNext(listHead.getNext());
+				} catch (NullPointerException e) {
+					head = listHead;
+				}
+				
 				if (listHead.getNext() != null) {
 					listHead.getNext().setPrevious(listHead.getPrevious());
 				} else {
@@ -120,11 +125,11 @@ public class MyDLL {
 		// Merges the contents of list and this class in alternating order class = 1 2 3,
 		// list = 4 4 4 -> alternate = 1 4 2 4 3 4
 		MyDLL newList = new MyDLL();
-		DLLNode classHead = this.head;
+		DLLNode classHead = head;
 		DLLNode listHead = list.head;
-		head = null;
 
 		while (classHead != null || listHead != null) {
+			// Accounts for different sized lists (in theory)
 			if (classHead != null) {
 				newList.addNode(classHead.getValue());
 				classHead = classHead.getNext();
@@ -144,7 +149,12 @@ public class MyDLL {
 		// Searches for value and places it at the front of the doubly linked list
 		DLLNode before = null;
 		DLLNode node = head;
-		DLLNode after = head.getNext();
+		DLLNode after;
+		try {
+			after = head.getNext();
+		} catch (NullPointerException e) {
+			after = null;
+		}
 
 		while (node != null) {
 			DLLNode listHead = head;
@@ -156,15 +166,19 @@ public class MyDLL {
 					// Move node to front of the list
 					head = node;
 					node.setNext(listHead);
+					node.setPrevious(null);
 					listHead.setPrevious(node);
+					before.setNext(null);
 				} else {
 					before.setNext(after);
 					after.setPrevious(before);
 					// Move node to front of the list
 					head = node;
 					node.setNext(listHead);
+					node.setPrevious(null);
 					listHead.setPrevious(node);
 				}
+				break;
 			}
 
 			if (before == null) {
@@ -193,13 +207,28 @@ public class MyDLL {
 
 		DLLNode before = head;
 		DLLNode after = head.getNext();
-		for (int i = 0; i < listLength - 1; i++) {
-			if (i == Math.round(listLength / 2) - 1) {
+		int insertIndex = Math.round(listLength / 2) - 1;
+		int higherLimit = listLength - 1;
+
+		if (listLength == 1) {
+			higherLimit = 1;
+			insertIndex = 0;
+		}
+		
+		for (int i = 0; i < higherLimit; i++) {
+			if (i == insertIndex) {
 				DLLNode node = new DLLNode(value);
+				if (listLength == 1) {
+					head = node;
+					node.setNext(before);
+					before.setPrevious(node);
+					break;
+				}
 				node.setPrevious(before);
 				before.setNext(node);
 				node.setNext(after);
 				after.setPrevious(node);
+				break;
 			}
 			before = before.getNext();
 			after = after.getNext();
